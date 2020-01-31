@@ -1,0 +1,25 @@
+power requirements for jetson:
+5.5V-19.6V(TX2)
+
+the below links says
+https://devblogs.nvidia.com/jetson-tx2-delivers-twice-intelligence-edge/
+it pulls not more than 10Watt power
+USB ports can regularly draw at most 2.5W each
+everything at full capacity will draw not more than 30Watt ( be on safe side)
+
+Jetsons are sensitive to very short power drop spikes at the moment of powering on.
+You'd simply put a capacitor as close as possible to where the power cable connects to the Jetson.
+
+we have to order DC male connector
+e.g.,Power Cord with 2.1mmX5.5mm Barrel Plug to XT-60 Male plug
+
+https://www.cablewholesale.com/specs/10w1-42102.php?utm_source=GoogleShopping&utm_medium=cpc&utm_term=10W1-42102&utm_campaign=DC%20Power%20Socket%20to%20Bare%20Wire%2C%20DC%20Male%20to%20Open%20End%2C%202%20foot&gclid=Cj0KCQiAvc_xBRCYARIsAC5QT9kT8TSCQWWR9rpfADRI9XKe4UftI_kVmcnQRcMK0D9KuyrB68GUr8gaAqkcEALw_wcB
+
+"A little note: it is really easy to damage a LiPo battery. The charge level of a single cell should not go under 3.0V, otherwise the cell will be damaged and the battery life reduced.
+Furthermore the discharge rate is not linear and a cell takes very little time to drop from 3.3V to 3.0V."
+
+mobile battery for tx1
+http://developer.download.nvidia.com/embedded/jetson/TK1/docs/Jetson_TK1_FAQ_2014May01_V2.pdf
+
+few powerbank that will work
+https://www.amazon.com/gp/product/B016BJCRUO/ref=oh_aui_detailpage_o00_s01?ie=UTF8&psc=1
