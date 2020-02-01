@@ -1,0 +1,22 @@
+ servo motors and the drive motor Electronic Speed Ccontroller (ESC) are controlled by PWM pulses sent from an on board receiver
+ A remote radio transmitter controlled by a user is the source for the receiver signals. PWM stands for Pulse-Width Modulation, a modulation technique used to encode a message into a pulsing signal.
+so, analog signal by digital means
+In order to control a servo or ESC, a PWM signal is sent to the device as repeating pulses of variable width.
+The pulses are defined by the frame size, which is the frequency of the pulse and the PWM duty cycle which is the ON vs. OFF time of the signal.
+For a servo or ESC, the device expects to see a frame every 20 milliseconds, but this can vary from device to device
+50Hz (50 cycles per second) which is a 20ms frame, 
+The device expects a pulse between 1.0 and 2.0 ms. For a servo the pulse width represents the position of the servo motor, 1.0ms represents -90 degrees, 1.5ms represents 0 degrees (center), and 2.0 ms represents +90 degrees. For an ESC the pulse width represents throttle position, 1.0 ms represents full reverse (or the lowest throttle setting, depending on the interpretation of the ESC), 1.5ms is neutral, and 2.0 represents full throttle.
+
+ The Traxxas ESC, a Velineon VXL-3s, is a brushless motor controller which creates tri-phase AC power from the onboard DC battery. The ESC contains a micro controller which interprets the supplied PWM signal and appropriately controls the car motor using built-in firmware. 
+ 
+ 
+ The ESC has three performance modes, regular, race, and training. 
+ For the purposes of the Jetson RACECAR, the ESC is placed into training mode, which limits the motor power to 50%.
+ 
+ The PCA9685 is a 12 bit device, which means basically that you can think of each frame as being split into 2^12 slots (4096). To calculate throttle pulses:
+1.0ms/20ms*4096 = 204 full reverse
+1.5ms/20ms*4096 = 307 neutral
+2.0ms/20ms*4096 = 409 full forward
+
+![warn_1](https://user-images.githubusercontent.com/34621440/73586406-266f2480-4472-11ea-87b6-89f9769e4faa.PNG)
+"Logo Title Text 2"
