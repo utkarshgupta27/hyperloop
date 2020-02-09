@@ -19,5 +19,7 @@ The device expects a pulse between 1.0 and 2.0 ms. For a servo the pulse width r
 2.0ms/20ms*4096 = 409 full forward
 
 jetsonracecar github
+ESC manual
+https://www.manualshelf.com/manual/turnigy-fatboy/v2-300a-esc-4-15s-opto/user-manual/page-10.html
 
 
