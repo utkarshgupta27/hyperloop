@@ -238,7 +238,7 @@ if __name__ == '__main__':
     positionDown = int(window.winfo_screenheight() / 4 - windowHeight / 2)
 
     # Position the window
-    window.geometry("950x600+{}+{}".format(positionRight, positionDown))
+    window.geometry("950x650+{}+{}".format(positionRight, positionDown))
 
     window.resizable(False, False)
     # window.config(bg="#7F7F7F")
