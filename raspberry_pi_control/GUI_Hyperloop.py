@@ -4,8 +4,8 @@ import tkinter
 import threading
 import os  # importing os library so as to communicate with the system
 import time  # importing time library to make Rpi wait because its too impatient
-# os.system("sudo pigpiod")  # Launching GPIO library
-# import pigpio  # importing GPIO library
+os.system("sudo pigpiod")  # Launching GPIO library
+import pigpio  # importing GPIO library
 from tkinter import *
 import logging
 from tkinter.scrolledtext import ScrolledText
@@ -21,7 +21,7 @@ class hyperloop_control(tkinter.Frame):
     logger = logging.getLogger(__name__)
 
     def __init__(self, master=None):
-        # self.pi = pigpio.pi()
+        self.pi = pigpio.pi()
         Frame.__init__(self, master)
         self.logger.info("For first time launch, first do calibration")
 
@@ -88,7 +88,7 @@ class hyperloop_control(tkinter.Frame):
         self.duty_cycle_get.grid(row=0, column=3, padx=1, pady=1, sticky="NSEW")
     def updateSpeed(self):
         global speed
-        # self.pi.set_servo_pulsewidth(self.esc, speed)
+        self.pi.set_servo_pulsewidth(self.esc, speed)
 
         if (speed < min_value) | (speed > max_value):
             self.spinbox.config(activebackground="red")
@@ -100,18 +100,18 @@ class hyperloop_control(tkinter.Frame):
         This only needs to be done when changing controllers, transmitters, etc. not upon every power-on.
         NB: if already calibrated, full throttle will be applied (briefly)!  Disconnect propellers, etc.
         """
-        # self.pi.set_servo_pulsewidth(self.esc, 0)
+        self.pi.set_servo_pulsewidth(self.esc, 0)
         self.logger.info("I hope battery is disconnected")
-        # self.pi.set_servo_pulsewidth(self.esc, self.max_value)
+        self.pi.set_servo_pulsewidth(self.esc, self.max_value)
         self.logger.info(
             "Connect the battery NOW.. you will here two beeps, then wait for a gradual falling tone")
-        # self.pi.set_servo_pulsewidth(self.esc, self.min_value)
+        self.pi.set_servo_pulsewidth(self.esc, self.min_value)
         self.logger.info("Wierd eh! Special tone")
         time.sleep(7)
         self.logger.info("Wait for it ....")
         time.sleep(5)
         self.logger.info("Finished calibration....")
-        # self.pi.set_servo_pulsewidth(self.esc, 0)
+        self.pi.set_servo_pulsewidth(self.esc, 0)
         time.sleep(2)
         self.logger.info("Now you can arm it....")
 
@@ -121,9 +121,9 @@ class hyperloop_control(tkinter.Frame):
         """
         self.logger.info("I hope batteries are connected")
         self.logger.info("Arming....")
-        # self.pi.set_servo_pulsewidth(self.esc, 0)
+        self.pi.set_servo_pulsewidth(self.esc, 0)
         time.sleep(2)
-        # self.pi.set_servo_pulsewidth(self.esc, self.min_value)
+        self.pi.set_servo_pulsewidth(self.esc, self.min_value)
         time.sleep(2)
         self.logger.info("Armed.....")
         self.logger.info(
@@ -138,12 +138,12 @@ class hyperloop_control(tkinter.Frame):
         Ensure this runs, even on unclean shutdown.
         """
         self.logger.info("slowing......")
-        # self.pi.set_servo_pulsewidth(self.esc, self.min_value)
+        self.pi.set_servo_pulsewidth(self.esc, self.min_value)
         time.sleep(1)
         self.logger.info("Failsafe...")
-        # self.pi.set_servo_pulsewidth(self.esc, 0)
+        self.pi.set_servo_pulsewidth(self.esc, 0)
         self.logger.info("Disabling GPIO.")
-        # self.pi.stop()
+        self.pi.stop()
         self.logger.info("Halted.")
 
 
