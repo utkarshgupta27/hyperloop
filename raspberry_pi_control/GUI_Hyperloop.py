@@ -16,12 +16,15 @@ speed = 1200
 max_value = 2400  # change this if your ESC's max value is different or leave it be
 min_value = 650
 freq=None
-
+esc=18
 class hyperloop_control(tkinter.Frame):
     logger = logging.getLogger(__name__)
 
     def __init__(self, master=None):
         self.pi = pigpio.pi()
+        self.max_value = 2400
+        self.min_value=650
+        self.esc=18
         Frame.__init__(self, master)
         self.logger.info("For first time launch, first do calibration")
 
@@ -54,10 +57,10 @@ class hyperloop_control(tkinter.Frame):
         self.B_left = Button(self.tool_bar, text="<", width=10, height=2, activeforeground='black',
                              activebackground='green', command=ButtonFunc.onArrowLeft)
         self.B_left.grid(row=0, column=0, padx=5, pady=5)
-        var = DoubleVar(value=speed)
-        self.spinbox = Spinbox(self.tool_bar, from_=0, to=2395.0, width=20, borderwidth=2, justify=RIGHT,
-                               validate="all", textvariable=var, font="Times 12 bold")
-        self.spinbox.grid(row=1, column=0, columnspan=2)
+        #var = DoubleVar(value=self.pi.get_servo_pulsewidth(self.esc))
+##        #self.spinbox = Spinbox(self.tool_bar, from_=0, to=2395.0, width=20, borderwidth=2, justify=RIGHT,
+##                               validate="all", textvariable=var, font="Times 12 bold")
+##        self.spinbox.grid(row=1, column=0, columnspan=2)
 
         self.B_right_frequent = Button(self.tool_bar, text=">>>>", width=10, activeforeground='black',
                                        activebackground='green', command=ButtonFunc.onAcceleration)
@@ -78,21 +81,21 @@ class hyperloop_control(tkinter.Frame):
         self.freq=Label(self.tool_bar,bg='light grey',text="Frequency in GPIO")
         self.freq.grid(row=0,column=0,padx=1,pady=1,sticky="NSEW")
         self.freq_get = Message(self.tool_bar, bg='white',
-                                 text="int(self.pi.get_PWM_frequency(self.esc))")
+                                 text=int(self.pi.get_PWM_frequency(self.esc)))
         self.freq_get.grid(row=0, column=1, padx=1, pady=1, sticky="NSEW")
-        self.duty_cycle = Label(self.tool_bar, bg='light grey',
-                                 text="duty_cycle")
-        self.duty_cycle.grid(row=0, column=2, padx=1, pady=1, sticky="NSEW")
-        self.duty_cycle_get = Message(self.tool_bar, bg='white',
-                                 text="int(pi.get_PWM_dutycycle(self.esc))")
-        self.duty_cycle_get.grid(row=0, column=3, padx=1, pady=1, sticky="NSEW")
+        #self.duty_cycle = Label(self.tool_bar, bg='light grey',
+        #                         text="duty_cycle")
+        #self.duty_cycle.grid(row=0, column=2, padx=1, pady=1, sticky="NSEW")
+        #self.duty_cycle_get = Message(self.tool_bar, bg='white',
+        #                         text=int(self.pi.get_PWM_dutycycle(self.esc)))
+        #self.duty_cycle_get.grid(row=0, column=3, padx=1, pady=1, sticky="NSEW")
     def updateSpeed(self):
         global speed
         self.pi.set_servo_pulsewidth(self.esc, speed)
 
         if (speed < min_value) | (speed > max_value):
             self.spinbox.config(activebackground="red")
-        self.spinbox.get()
+        #self.spinbox.get()
 
     def calibrate(self):
         """
@@ -123,9 +126,10 @@ class hyperloop_control(tkinter.Frame):
         self.logger.info("Arming....")
         self.pi.set_servo_pulsewidth(self.esc, 0)
         time.sleep(2)
-        self.pi.set_servo_pulsewidth(self.esc, self.min_value)
+        self.pi.set_servo_pulsewidth(self.esc, 650)
         time.sleep(2)
         self.logger.info("Armed.....")
+        self.pi.set_servo_pulsewidth(self.esc, 1200)
         self.logger.info(
             "I'm Starting the motor, I hope its calibrated and armed, if not stop this program by giving 'x'")
         time.sleep(1)
@@ -138,12 +142,12 @@ class hyperloop_control(tkinter.Frame):
         Ensure this runs, even on unclean shutdown.
         """
         self.logger.info("slowing......")
-        self.pi.set_servo_pulsewidth(self.esc, self.min_value)
+        self.pi.set_servo_pulsewidth(self.esc, 1200)
         time.sleep(1)
-        self.logger.info("Failsafe...")
+        #self.logger.info("Failsafe...")
         self.pi.set_servo_pulsewidth(self.esc, 0)
-        self.logger.info("Disabling GPIO.")
-        self.pi.stop()
+        #self.logger.info("Disabling GPIO.")
+        #self.pi.stop()
         self.logger.info("Halted.")
 
 
