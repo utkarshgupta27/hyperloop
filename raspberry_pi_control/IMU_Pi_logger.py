@@ -25,7 +25,7 @@ class IMULogger(object):
     def initialize_log_directory(self):
         """Create IMU directory and IMU file"""
 
-        self.path = '/home/pi/IMU_pi_logger/logs/'
+        self.path = '/home/pi/Desktop/IMU_pi_logger/logs/'
 
         if not os.path.exists(self.path):
             os.makedirs(self.path)
@@ -36,16 +36,14 @@ class IMULogger(object):
     def initialize_LED(self):
         """Set GPIO settings"""
 
-        self.LED_PIN = 40
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(self.LED_PIN, GPIO.OUT, initial=GPIO.LOW)
+        print("done")
         
     def initialize_IMU_serial_port(self):
         """Attempt to connect to IMU serial port
         Scans dev directory for USB ports and attempts to connect to serial port
         """
         
-        self.dev_ports = ['/dev/' + f for f in os.listdir('/dev') if 'ttyAMA' in f]
+        self.dev_ports = ['/dev/' + f for f in os.listdir('/dev') if 'ttyUSB0' in f]
         if not self.dev_ports:
             return False
 
