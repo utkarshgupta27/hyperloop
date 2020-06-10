@@ -1,7 +1,6 @@
 # Braking System
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-
 Pneumatic Braking:
 > Pneumatic brake system or a compressed air brake system is a type of friction brake for vehicles in which compressed air pressing on a piston is used to apply the pressure to the brake pad needed to stop the vehicle.
 
