@@ -7,6 +7,13 @@
 - [Sensors](Pages/Sensors.html)
 - [Remote Connectivity](Pages/Connectivity.html)
 
+## Simulation
+
+Working on Simulation :
+
+![image](https://user-images.githubusercontent.com/34621440/84543900-42a98a80-acca-11ea-942b-1b6a587238de.png)
+
+
 ## IoT Solutions for controlling: Data Acquisition and Analysis in the Real World
 - AWS based
 
