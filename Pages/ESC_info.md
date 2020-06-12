@@ -16,6 +16,8 @@ ESC  (ESC+BLDC/BDC act like a servo)
 - For a servo or ESC, the device expects to see a frame every 20 milliseconds, but this can vary from device to device 50Hz (50 cycles per second) which is a 20ms frame,
 -The device expects a pulse between 1.0 and 2.0 ms. For a servo the pulse width represents the position of the servo motor, 1.0ms represents -90 degrees, 1.5ms represents 0 degrees (center), and 2.0 ms represents +90 degrees. For an ESC the pulse width represents throttle position, 1.0 ms represents full reverse (or the lowest throttle setting, depending on the interpretation of the ESC), 1.5ms is neutral, and 2.0 represents full throttle.
 - has three performance modes, regular, race, and training.
+# Programming of ESCs:
+ESC_spin200_----programming _-----(http://87.197.134.200/download/SPIN_EN.pdf)
 
 # New Features!
 
