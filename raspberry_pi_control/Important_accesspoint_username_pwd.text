@@ -4,3 +4,9 @@ vnc_ip for pi_with_ros ::172.16.2.223
 ubiquityrobot_accesspoint::  10.42.0.1   (wifipasswd: robotseverywhere)
 username:ubuntu
 password:ubuntu
+
+
+Our pod Pi::
+sshd:: 
+password:: password
+vnc:: 169.254.241.32
