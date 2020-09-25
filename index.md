@@ -3,6 +3,8 @@
 - [Battery](Pages/Battery.html)
 - [ESC](Pages/ESC_info.html)
 - [Jetson] Stay tune
+- [Driving Motor](Pages/Powertrain_motor.html)
+- [Hover motor]Stay tune
 - [Raspberry Pi Connection and other](Pages/Pi.html)
 - [Sensors](Pages/Sensors.html)
 - [Remote Connectivity](Pages/Connectivity.html)
