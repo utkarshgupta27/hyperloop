@@ -7,6 +7,7 @@
 - [Hover motor]Stay tune
 - [Raspberry Pi Connection and other](Pages/Pi.html)
 - [Sensors](Pages/Sensors.html)
+- [Simulation](Pages/Simulink_Simulation.html)
 - [Remote Connectivity](Pages/Connectivity.html)
 
 ## Simulation
