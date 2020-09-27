@@ -1,5 +1,4 @@
 [![image](https://user-images.githubusercontent.com/34621440/94373930-5ab4e680-00ce-11eb-9140-2131acbb4592.png)](https://utkarshcrazy.github.io/hyperloop/)
-
 # BLDC MOTOR
 
 [![image](https://user-images.githubusercontent.com/34621440/94372968-ae700180-00c7-11eb-9615-8c392adeffb1.png)](https://www.tppowerusa.com/tp-100-350kv)
