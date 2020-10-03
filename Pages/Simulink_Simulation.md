@@ -20,3 +20,5 @@ Why we are doing model based design and simulation?
 * [Mathematics] - flight dynamics model including torque rpm relation, throttle% to rpm, time constant delay
 * Test system where we can collect data for finding the parameters required for modeling <throttle control mode and esc scaling>
 * •	In test setup we will send the data in real time to computer through raspberry pi, this data -> imported to MATLAB ( here we can make a convenient GUI to run analysis function to analyze the data 
+##### BLDC PWM Simulation model
+![image](https://user-images.githubusercontent.com/34621440/94978918-790f4d80-04e5-11eb-8af5-9154268ff075.png)
